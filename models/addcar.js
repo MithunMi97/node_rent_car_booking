@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const { ObjectId } = mongoose.Schema;
 
-const addcarSchema = new mongoose.Schema(
+const AddcarSchema = new mongoose.Schema(
     {
         vehiclenumber: {
             type: Number,
@@ -33,4 +33,4 @@ const addcarSchema = new mongoose.Schema(
     { timestamps: true }
 );
 
-module.exports = mongoose.model("addcar", addcarSchema);
+module.exports = mongoose.model("Addcar", AddcarSchema);

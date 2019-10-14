@@ -1,14 +1,18 @@
-const addcar = require("../models/addcar");
+const Addcar = require("../models/addcar");
 const { errorHandler } = require("../helpers/dbErrorHandler");
 
 exports.create = (req, res) => {
-    const addcar=new addcar(req.body)
-        addcar.save((err, result) => {
+    console.log(req.url);
+    console.log("Hi test");
+    const newCar = new Addcar(req.body);
+   
+    newCar.save((err, result) => {
             if (err) {
-                return res.staus(400).json({
+                console.log(err);
+                return res.status(400).json({
                     error: errorHandler(err)
                 });
             }
             res.json(result);
         });
-};
+    };
