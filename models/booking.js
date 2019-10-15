@@ -1,8 +1,8 @@
 const mongoose = require("mongoose");
-const crypto = require("crypto");
-const uuidv1 = require("uuid/v1");
+const DateOnly=require("mongoose-dateonly")(mongoose);
+const { ObjectId } = mongoose.Schema;
 
-const AddcarSchema = new mongoose.Schema(
+const BookingSchema = new mongoose.Schema(
     {
         vehiclenumber: {
             type: Number,
@@ -10,23 +10,26 @@ const AddcarSchema = new mongoose.Schema(
             required: true,
             maxlength: 32
         }, 
-        carmodel: {
-            type: String,
-            trim: true,
-            required: true,
-            maxlength: 32
-        },
-        seatingcapacity: {
-            type:Number,
-            required: true
-        },
-        rentperday: {
-            type: Number,
+       
+        date: {
+            type: DateOnly,
             trim: true,
             required: true,
             maxlength: 32
         }, 
-        Bookingstatus: {
+        dayscount: {
+            type: Number,
+            trim: true,
+            required: true,
+            maxlength: 32
+        },
+        price:{
+            type: Number,
+            trim: true,
+            required: true,
+            maxlength: 32
+        },
+        availability: {
             required: false,
             type: Boolean
         }
@@ -34,6 +37,4 @@ const AddcarSchema = new mongoose.Schema(
     { timestamps: true }
 );
 
-// virtual field
-
-module.exports = mongoose.model("add", AddcarSchema);
+module.exports = mongoose.model("Booking", BookingSchema);
